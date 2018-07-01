@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+       <meta charset = "utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name = "description" content="A currency converter web app with ofline capabilities">
+       <meta name = "keywords" content="Currency Calculator, PWA , ">
+       <meta name = "author" content="Linda Ikechukwu">
+       <title>My Currency Converter</title>
+       <link rel="shortcut icon" href="assests/favicon.ico" type="image/x-icon" />
+       <link rel="shortcut icon" href="assests/animated_favicon1.gif"  />      
+       <link rel="apple-touch-icon" href="assests/animated_favicon1.gif" sizes="32x32 " />
+       <link rel="manifest" href="manifest.json">
+       <link rel ="Stylesheet" href="assests/style.css">
+   </head>
+   <body>
+       <div id ="converter">
+        
+            
+                <h1>My Currency Converter</h1>
+                <div class="inner">
+                    <label for="amount">Amount<span class="required">*</span></label>
+                    <input type="number" id="amount" placeholder="Enter Amount to Convert"><br/>
+
+                    <label for="from-currency">From<span class="required">*</span></label>
+                    <select id="from" name="from"> </select><br/>
+
+                    <label for="to-currency">To<span class="required">*</span></label>
+                    <select id="to" name="to"></select><br/>
+
+                    <div class="displayArea">
+                        <p class="displayNum"></p>
+                    </div>
+                
+                    <input type="submit" value="Convert" id="process">
+
+                </div>
+
+        
+        </div>
+    <script src="Js/converter.js"></script>
+    <script src = "Js/currencyIdb.js"></script>   
+   </body>
+</html>

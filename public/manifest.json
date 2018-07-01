@@ -1,0 +1,13 @@
+{
+    "short_name": "My Converter",
+    "name": "My Converter",
+    "icons": [{
+      "src": "assests/icon.png",
+      "sizes": "246x246",
+      "type": "image/png"
+    }],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#4e7df7",
+    "theme_color": "#4e7df7"
+  }

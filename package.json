@@ -1,0 +1,19 @@
+{
+  "name": "myconverter",
+  "version": "1.0.0",
+  "description": "a currency converter web app with offline capabilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "currency",
+    "converter",
+    "offline"
+  ],
+  "author": "linda ikechukwu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
