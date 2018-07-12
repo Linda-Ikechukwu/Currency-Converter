@@ -1,15 +1,11 @@
-console.log("seeing the file");
-const display = document.querySelector('.displayNum');
-let userInput = document.querySelector('#amount').value;
-
 if (!window.indexedDB) {
     console.log("Your browser doesn't support a stable version of IndexedDB");
 }
 
-// opening  database 
+// open database 
 function openDatabase(){
 	// return db instances
-	const DB_NAME 	= 'converter';
+	const DB_NAME 	= 'Converter';
 	const database 	= indexedDB.open(DB_NAME, 1);
 
 	// on error catch errors 
@@ -24,7 +20,7 @@ function openDatabase(){
 	  	var upgradeDB = event.target.result;
 
 	  	// create an objectStore for this database
-	  	var objectStore = upgradeDB.createObjectStore("currencies", {keyPath: 'query'});
+	  	var objectStore = upgradeDB.createObjectStore("currencies");
 	};
 
 	// return db instance
@@ -39,7 +35,7 @@ function saveToDatabase(data){
 	// on success add user
 	db.onsuccess = (event) => {
 
-		console.log('database has been openned !');
+		// console.log('database has been openned !');
 		const query = event.target.result;
 
 	  	// check if already exist symbol
@@ -53,16 +49,18 @@ function saveToDatabase(data){
 	  		if(!dbData){ 
 	  			// save data into currency object
 				store.add(data, data.symbol);
+				console.log(data +"and" +data.symbol);
 	  		}else{
 	  			// update data existing currency object
 				store.put(data, data.symbol);
+				console.log(data +"and" +data.symbol);
 	  		};
 	  	}
 	}
 }
 
 // fetch from web database
-function fetchFromDatabase(symbol) {
+function fetchFromDatabase(symbol,value) {
 	// init database
 	const db = openDatabase();
 	
@@ -73,36 +71,26 @@ function fetchFromDatabase(symbol) {
 		const query = event.target.result;
 
 		// check if already exist symbol
-		const currency = query.transaction("currencies").objectStore("currencies").get(symbol);
+		const currency = query.transaction("currencies").objectStore("currencies").get(value);
+		console.log(value)
 
 		// wait for users to arrive
 	  	currency.onsuccess = (event) => {
 	  		const data = event.target.result;
 	  		// console.log(data);
 	  		if(data == null){
-                  
-                  const errMsg = "You are currently offline,You need to convert this pair online first";
-                   display.innerHTML = errMsg;
-				// hide error message
-				setTimeout((e) => {
-					display.html("");
-				}, 1000 * 3);
+				  alert('You are currently offline... check internet connectivity and try again.');
+			  }
+		                	
+		       
 
-				// void
-				return;
-	  		}
+			  let userInput = document.querySelector('#amount').value;
+			  let result = document.querySelector('.result');
+			  let amtConversion = (userInput * data.value).toFixed(3);
+        
+              result.innerHTML = `${amtConversion} ${toCurr} `;
 
-			 console.log(data);
-			 console.log(data.value);
-            
-             let pairs = symbol.split('_');
-			let fr = pairs[0];
-			let to = pairs[1];
-
-			let unitConversion = object.value;
-			let amtConversion = (userInput * unitConversion).toFixed(3);
-            display.innerHTML = `${amtConversion} ${to} `;
+			
 	  	}
 	}
 }
-

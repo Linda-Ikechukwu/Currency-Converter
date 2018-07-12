@@ -1,12 +1,27 @@
+//checking if indexeddb exists in browser and opening database
+if (!window.indexedDB) {
+	window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+} 
+else{
+  const dbName = "converter";
+
+  var request = indexedDB.open(dbName);
+
+//handling request errors
+  request.onerror = (event) =>{
+   console.log('Failed to open database', event.target.errorCode);
+   }
+}
+
 
 //Registering the service worker
 if ('serviceWorker' in navigator) {
     
       navigator.serviceWorker.register('./sw.js').then(registration => {
         // Registration was successful
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+       console.log('ServiceWorker registration successful with scope: ', registration.scope);
       }, function(err) {
-        // registration failed :(
+        //registration failed :(
         console.log('ServiceWorker registration failed: ', err);
       });
     
@@ -32,46 +47,57 @@ fetch('https://free.currencyconverterapi.com/api/v5/countries')
     });
 
 
-//listening for click event and converting
-const submitBtn = document.querySelector("#process");
+//function to convert
 
-submitBtn.addEventListener('click',function(){
+ function convert() {
     let userInput = document.querySelector('#amount').value;
     let fromCurr = document.querySelector('#from').value;
     let toCurr = document.querySelector('#to').value;
-    let display = document.querySelector('.displayNum');
+    let result = document.querySelector('.result');
+    console.log(result);
     
     let query = `${fromCurr}_${toCurr}`;
     const conversionRate = `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`;
+
+
      
     
     fetch(conversionRate)
     .then(response => response.json())
     .then(responseValue => {
     
-        let unitConversion = responseValue[`${fromCurr}_${toCurr}`]
+        let unitConversion = responseValue[`${query}`];
+        console.log(unitConversion);
         let amtConversion = (userInput * unitConversion).toFixed(3);
-        display.innerHTML = `${amtConversion} ${toCurr} `;
+        
+        result.innerHTML = `${amtConversion} ${toCurr} `;
+
+        console.log(result.innerHTML);
 
         let object = {
             symbol: query,
             value: unitConversion
         };
+       
+        
+        saveToDatabase(object);
+            
+        
 
         // save to database
         //this looping method would have been improved if i had more time
-        let i = 0
-        while(i < 10000){
-            saveToDatabase(object);   
-        }
+        //let i = 0
+        //while(i < 10000){
+         //   saveToDatabase(object);   
+       // }
         
 
     }).catch(error => {
-        //fetchFromDatabase(query);
-        //document.write('Looks like there was a problem: \n', error);
+        fetchFromDatabase(query, unitConversion);
+        document.write('Looks like there was a problem: \n', error);
     });
-
-});
+    
+};
 
 
 
