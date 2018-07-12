@@ -2,12 +2,17 @@
     "short_name": "My Converter",
     "name": "My Converter",
     "icons": [{
-      "src": "assests/icon.png",
+      "src": "assests/icon.jpg",
       "sizes": "246x246",
+      "type": "image/jpg"
+    },
+    {
+      "src": "assests/icon2.png",
+      "sizes": "512x512",
       "type": "image/png"
     }],
     "start_url": "./index.html",
     "display": "standalone",
-    "background_color": "#4e7df7",
-    "theme_color": "#4e7df7"
+    "background_color": "#ce2856",
+    "theme_color": "#ce2856"
   }
