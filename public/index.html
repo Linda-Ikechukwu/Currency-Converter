@@ -5,13 +5,15 @@
        <meta charset = "utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <meta name = "description" content="A currency converter web app with ofline capabilities">
-       <meta name = "keywords" content="Currency Calculator, PWA , ">
+       <meta name = "keywords" content="Currency Converter, PWA ,Service Worker, ALC 3.0 Challenge ">
        <meta name = "author" content="Linda Ikechukwu">
-       <meta name="theme-color" content="#4e7df7">
+       <meta name="theme-color" content="#fd1d1d">
        <title>My Currency Converter</title>
        <link rel="shortcut icon" href="assests/favicon.ico" type="image/x-icon" />
        <link rel="shortcut icon" href="assests/animated_favicon1.gif"  />      
        <link rel="apple-touch-icon" href="assests/animated_favicon1.gif" sizes="32x32 " />
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+       <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
        <link rel="manifest" href="manifest.json">
        <link rel ="Stylesheet" href="assests/style.css">
    </head>
@@ -19,26 +21,29 @@
        <div id ="converter">
         
             
-                <h1>My Currency Converter</h1>
+                <h1>Da Konverter <i class="fas fa-money-bill-wave"></i> </h1>
                 <div class="inner">
-                    <label for="amount">Amount<span class="required">*</span></label>
-                    <input type="number" id="amount" placeholder="Enter Amount to Convert"><br/>
+                    <label for="amount">Amount<span class="required"> *</span>
+                        <input  onchange="convert()" type="number" id="amount" placeholder="Enter Amount to Convert" required ><br/>
+                     </label>
+                    
+                    <label for="from-currency">From<span class="required"> *</span>
+                        <select id="from" name="from" onchange="convert()"> </select>
+                    </label>
+                    
 
-                    <label for="from-currency">From<span class="required">*</span></label>
-                    <select id="from" name="from"> </select><br/>
+                    <label for="to-currency">To<span class="required"> *</span>
+                        <select id="to" name="to" onchange="convert()"></select><br/>
+                    </label>
+                    
 
-                    <label for="to-currency">To<span class="required">*</span></label>
-                    <select id="to" name="to"></select><br/>
-
-                    <div class="displayArea">
-                        <p class="displayNum"></p>
-                    </div>
-                
-                    <input type="submit" value="Convert" id="process">
-
+                   <p><span class="label">Result: </span><br/> <span class="result"></span>
+                    <hr>
+                   </p>
+                   <p>Made with <i class="fas fa-heart"></i> from <a href="https://github.com/Linda-Ikechukwu"> Linda Ikechukwu</a></p> 
                 </div>
 
-        
+             
         </div>
     <script src="Js/converter.js"></script>
     <script src = "Js/currencyIdb.js"></script>   

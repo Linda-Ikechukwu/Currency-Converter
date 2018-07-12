@@ -1,6 +1,6 @@
 //script for caching files using the service worker 
 
-let staticFilesCache = 'cc-v2'; 
+let staticFilesCache = 'cc-v5'; 
 
 //caching the appilication shell
 
@@ -15,11 +15,13 @@ self.addEventListener('install', event => {
             './index.html',
             './assests/style.css',
             './assests/icon.jpg',
+            './assests/icon2.png',
             './assests/animated_favicon1.gif',
             './assests/favicon.ico',
             './Js/converter.js',
-            './assests/money_bg.jpg',
+            '/Js/currencyIdb.js',
             'https://free.currencyconverterapi.com/api/v5/countries'
+
          ]
         );
       })
@@ -53,6 +55,7 @@ self.addEventListener('fetch', event => {
       .then(response => {
         // Cache hit - return response
         if (response) {
+          console.log('fetching',response);
           return response;
         }
 
