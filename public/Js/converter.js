@@ -28,7 +28,10 @@ if ('serviceWorker' in navigator) {
   }
 
 
-
+//Checking internet connectivity
+if(window.navigator.online){
+  alert("Connect your device to internet for real time connection")
+}
 
 //getting currency values from api and appending it to <options>
 fetch('https://free.currconv.com/api/v7/countries?apiKey=3dd786f5584529a919c2')
