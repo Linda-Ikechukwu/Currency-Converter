@@ -20,7 +20,7 @@ self.addEventListener('install', event => {
             './assests/favicon.ico',
             './Js/converter.js',
             '/Js/currencyIdb.js',
-            'https://free.currencyconverterapi.com/api/v5/countries'
+            'https://free.currconv.com/api/v7/countries?apikey=3dd786f5584529a919c2'
 
          ]
         );
