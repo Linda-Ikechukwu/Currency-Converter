@@ -28,13 +28,15 @@
                      </label>
                     
                     <label for="from-currency">From<span class="required"> *</span>
-                        <input list="" placeholder="Select Currency" >
+                        <input list="from" placeholder="Select Currency" >
+                        <datalist id="from" name="from" onchange="convert()"> </datalist>
                     </label>
-                    <select id="from" name="from" onchange="convert()"> </select>
+                    
                     
 
                     <label for="to-currency">To<span class="required"> *</span>
-                        <select id="to" name="to" onchange="convert()"></select><br/>
+                        <input list="to" placeholder="Select Currency" >
+                        <datalist id="to" name="to" onchange="convert()"></datalist>
                     </label>
                     
 
