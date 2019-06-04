@@ -57,7 +57,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/countries')
     console.log(result);
     
     let query = `${fromCurr}_${toCurr}`;
-    const conversionRate = `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`;
+    const conversionRate = `https://free.currconv.com/api/v5/convert?q=${query}&compact=ultra&apiKey=3dd786f5584529a919c2`;
 
 
      
