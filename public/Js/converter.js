@@ -31,7 +31,7 @@ if ('serviceWorker' in navigator) {
 
 
 //getting currency values from api and appending it to <options>
-fetch('https://free.currencyconverterapi.com/api/v5/countries')
+fetch('https://free.currconv.com/api/v7/countries?apiKey=3dd786f5584529a919c2')
     .then(response => response.json())
     .then(myJson => {
 
@@ -57,7 +57,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/countries')
     console.log(result);
     
     let query = `${fromCurr}_${toCurr}`;
-    const conversionRate = `https://free.currconv.com/api/v5/convert?q=${query}&compact=ultra&apiKey=3dd786f5584529a919c2`;
+    const conversionRate = `https://free.currconv.com/api/v7/convert?q=${query}&compact=ultra&apiKey=3dd786f5584529a919c2`;
 
 
      
