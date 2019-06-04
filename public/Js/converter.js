@@ -100,7 +100,13 @@ fetch('https://free.currconv.com/api/v7/countries?apiKey=3dd786f5584529a919c2')
 };
 
 
+$(document).ready(function(){
+$("input").click(function(){
+        $(this).next().show();
+        $(this).next().hide();
+    });
 
+});
 
     
 
